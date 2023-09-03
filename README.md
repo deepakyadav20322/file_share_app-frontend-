@@ -1,5 +1,5 @@
 # Demo
-Link:- [https://teal-gumption-49be92.netlify.app/](https://teal-gumption-49be92.netlify.app/)
+Link:- [https://doc-wave-share.netlify.app/](https://doc-wave-share.netlify.app/)
 
 
 # React + Vite
