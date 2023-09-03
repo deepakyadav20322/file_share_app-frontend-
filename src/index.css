@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/* Nav link hover border animation .....  */
+.cool-link{
+    font-size: 16px;
+}
+.cool-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #37D154;
+    transition: width .3s;
+    
+}
+.cool-link:hover{
+    color: #37D154;
+}
+.cool-link:hover::after {
+    width: 100%;
+    /* //transition: width .3s; */
+}
+
+.sharing-container .input-container {
+    position:relative;
+    
+}
+.input-container .copy-icon-box {
+    position: absolute;
+    height: 40px;
+    width: 35px;
+  right: 3px;
+  top:3px;
+ background-color: #f7fff9;
+ cursor: pointer;
+ padding: 10px 5px;
+ border-radius: 4px;
+}
+
+.sharing-container .input-container input{
+    width:400px;
+    border: 2px dashed #6EED1F;
+    border-radius: 6px;
+    padding:10px 15px;
+    padding-right: 42px;
+    font-size: 16px;
+    background-color: #D1FCCD;
+    color: #000;
+}
+/* Progress bar css start ---------------------*/
+.container{
+    display: flex;
+    width: 220px;
+    padding: 40px 0;
+    border-radius: 8px;
+    background: #fff;
+    row-gap: 30px;
+    flex-direction: column;
+    align-items: center;
+}
+.circular-progress{
+    position: relative;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background: conic-gradient(#5af44c 3.6deg, #ededed 0deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.circular-progress::before{
+    content: "";
+    position: absolute;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.progress-value{
+    position: relative;
+    font-size: 30px;
+    font-weight: 600;
+    color: #5af44c;
+}
+.text{
+    font-size: 30px;
+    font-weight: 500;
+    color: #606060;
+}
+/* Progress bar css end ---------------------*/
+
+
+
+
+@media screen and (max-width:480px) {
+ .webshare-box-file-top {
+    width:300px;
+ }   
+ .webshare-box-file{
+    width:340px ;
+ }
+ .webshare-box-email {
+   width: 340px; 
+ }
+ .sharing-container .input-container input{
+    width:350px
+ }
+}
