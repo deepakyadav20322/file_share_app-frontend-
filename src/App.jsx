@@ -7,6 +7,7 @@ import copyIcon from "./assets/copy-icon.svg";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
 import ProgressBar from "./component/ProgressBar";
+import {RiLoader4Line} from 'react-icons/ri'
 import baseURL from "./config";
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
   const [progress, setProgress] = useState(100);
   const [fileImgShow, setFileImgShow] = useState(true);
   const [UUID, setUUID] = useState("");
-  const [uploadmessage, setuploadMessage] = useState("Upload your file");
+  const [btnSpin,setBtnSpin] = useState(false);
+  const [uploadmessage, setuploadMessage] = useState("Click here to Upload your file");
   const inputRef = useRef(null);
 
   const copyToClipboard = () => {
@@ -35,6 +37,8 @@ function App() {
     { name: "Documentation", href: "#" },
     // { name: 'Company', href: '#' },
   ];
+
+
   const handleFile = (e) => {
     const uploadedFile = e.target.files[0];
     if (uploadedFile) {
@@ -67,6 +71,7 @@ function App() {
         },
       });
     }
+    setBtnSpin(true)
     console.log("async:--", fileData.get("myfile"));
     try {
       const res = await axios.post(`${baseURL}/files`, fileData, {
@@ -87,6 +92,7 @@ function App() {
         setLinkBtnShow(false);
         setShareLink(res.data.file);
         setLinkBox(true);
+        setBtnSpin(false);
         const parts = (res.data.file).split('/');
         const uuid = parts[parts.length - 1];
         console.log(uuid)
@@ -102,9 +108,10 @@ function App() {
   return (
     <>
       <div className="bg-white">
-        <header className="absolute inset-x-0 top-0 z-50">
+        
+        <header className="fixed inset-x-0 top-0 z-50 bg-gradient-to-t from-[#D9FBE5] to-white ">
           <nav
-            className="flex items-center justify-between p-6 md:px-8"
+            className="flex items-center justify-between p-2 md:px-8"
             aria-label="Global"
           >
             <div className="flex md:flex-1">
@@ -218,24 +225,33 @@ function App() {
           </Dialog>
         </header>
 
-        <div className="relative isolate px-6 pt-14 md:px-8">
+        <div className="relative isolate px-6 pt-14 mt-[50px] max-w-[1280px] m-auto md:px-8 flex flex-col justify-around align-top lg:flex-row lg:justify-around">
           <div
             className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
             aria-hidden="true"
           >
             <div
-              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#55f38a] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#55f38a] to-[#9189fcd3] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
               style={{
                 clipPath:
                   "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
               }}
             />
           </div>
+          <div className="home-left max-w-[380px] mt-10 lg:mr-10 m-auto">
+             <h1 className="text-[35px] font-[600]"> Send your document with others,FREE</h1>
+             <h3 className="mb-10 lg:mb-0"> Share any file or video easily, with anyone</h3>
+             {/* <h3>Your file transfer is secure and fast.</h3> */}
+             <div className="w-[350px] h-[350px] hidden lg:flex  justify-center">
+             <img className=" object-cover w-[300px] h-[300px] " src="https://fjord.dropboxstatic.com/warp/conversion/dropbox/warp/en-us/features/share/share_Hero_00@2x.png?id=056bc1c0-434a-4256-806e-c59e0496eba5&output_type=webp" alt="" />
+             </div>
+          </div>
 
-          <div className="webshare-box flex flex-col justify-start items-center min-h-[100%] h-[100%] mt-[50px] max-w-[1280px] m-auto">
+          <div className="webshare-box flex flex-col justify-start items-center min-h-[100%] h-[100%] max-w-[1280px] m-auto lg:pb-[80px]">
             <div className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] flex flex-col justify-start items-center pt-4 pb-2 rounded">
               <div className="webshare-box-file border-2 border-black w-[450px] p-4 rounded mx-2 flex flex-col justify-center items-center ">
-                <label className="webshare-box-file-top cursor-pointer w-[400px] bg-[#d1fccd] hover:bg-[#b8f7b3] transition-all border-2 border-dashed border-[#5af44c] rounded flex flex-col justify-center items-center m-3 pt-6 pb-3">
+                <div className="border-[2px] border-dashed border-[#5af44c] rounded">
+                <label className="webshare-box-file-top cursor-pointer w-[380px] bg-[#d1fccd] hover:bg-[#b8f7b3] transition-all border-2 border-solid border-[#5af44c] rounded flex flex-col justify-center items-center m-1 pt-6 pb-3">
                   <img
                     className={`w-[80px] h-[80px] my-3 ${fileImgShow? 'block':'hidden'}`}
                     src={fileImg}
@@ -248,7 +264,7 @@ function App() {
                    {uploadmessage==="File uploaded successfully"?
                     <div className="text-[12px] flex flex-col justify-center items-center">
                     <p>or</p>
-                    <p>browase another file</p></div>
+                    <p>click for browase another file</p></div>
                     :""
                   }
                   <input
@@ -259,16 +275,18 @@ function App() {
                     onChange={handleFile}
                   />
                 </label>
+                </div>
                 <div className="flex flex-col-reverse">
                   <button
                     className={`share-link mt-[10px] bg-[#6EED1F] transition-all hover:bg-[#b8f7b3] border-2 border-[#6EED1F] border-dashed py-[6px] px-[40px] rounded-[30px] ${
-                      linkBtnShow ? "block" : "hidden"
-                    }`}
+                      linkBtnShow ? "block" : "hidden"}`}
                     onClick={handleUploadFile}
                   >
-                    Generate share link
+                    <span className="flex flex-row ">
+                      Generate share link {btnSpin?<RiLoader4Line size={22} color="" className=" ml-1 mt-1 animate-spin "/>:"" }
+                      </span> 
                   </button>
-                  <p className={fileData ? "block" : "hidden"}>
+                  <p className={`${fileData ? "block" : "hidden"} overflow-hidden`}>
                     file name :-{fileData?.get("myfile")?.name}{" "}
                   </p>
                 </div>
@@ -279,7 +297,7 @@ function App() {
                   linkBox ? "block" : "hidden"
                 }`}
               >
-                <p className="text-center mt-4 mb-2">link expirs in 24 hours</p>
+                <p className="text-center mt-2 mb-2">link expirs in 24 hours</p>
                 <div className="input-container">
                   <input
                     type="text"

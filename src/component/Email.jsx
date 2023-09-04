@@ -40,17 +40,23 @@ const Email = ({UUID}) => {
      }
 
   return (
-    <div className='webshare-box-email border-2 border-black w-[450px] px-4 m-3 h-[188px] flex flex-col justify-center items-center'>
+    <div className='webshare-box-email border-2 border-black w-[450px] px-4 my-3 mx-2 h-[175px] lg:h-[150px] flex flex-row-reverse justify-center items-center'>
+
+      <div className={`w-[100px] h-[100px] object-cover ml-2 flex flex-col justify-center items-center ${loader?'hidden':'block'}`}>
+        <p className='text-[14px] font-[500]'>Or scan QR</p>
+        <img className='w-[100px] ml-2' src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://file-share-app-backend.onrender.com/files/${UUID}`} alt="qrImg" />
+        </div>
+
          <div className={`flex flex-col justify-center items-center  ${loader?'hidden':'block'}`}>
-        <div className='mb-2 mt-[1.5rem]'>
-                  <label htmlFor="sender" className='pt-2'>Sender email</label>
-                  <input type="email" id='sender' name='emailFrom' className='border-b-2 border-black ml-3 outline-none ' onChange={handleEmailChange} required/>
+        <div className='mb-1 mt-[1rem]'>
+                  <label htmlFor="sender" className='pt-1'>Sender email</label>
+                  <input type="email" id='sender' name='emailFrom' className='border-b-2 border-black mr-4 ml-3 outline-none ' onChange={handleEmailChange} required/>
                 </div>
-                <div className='mb-2 mt-[1.5rem]'>
-                  <label htmlFor="reciver" className='pt-2'>Reciver email</label>
-                <input type="email" id='reciver' name='emailTo' className='border-b-2 border-black ml-3 outline-none' onChange={handleEmailChange} required/>
+                <div className='mb-0 lg:mt-[1.5rem]'>
+                  <label htmlFor="reciver" className='pt-1'>Reciver email</label>
+                <input type="email" id='reciver' name='emailTo' className='border-b-2 border-black ml-3 mr-4 outline-none' onChange={handleEmailChange} required/>
                 </div>
-                <button className=' border-[1px] outline-none bg-[#6EED1F] rounded px-3 py-2 my-2 ' onClick={sendEmailData}>Send Email</button>
+                <button className=' border-[1px] outline-none bg-[#6EED1F] rounded px-3 py-2 mt-2 ml-20 mb-2 ' onClick={sendEmailData}>Send Email</button>
         </div>
         <div class={`${loader?'block':'hidden'} z-50 flex justify-center items-center`}>
    <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-[#6EED1F]"></div>

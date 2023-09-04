@@ -57,8 +57,8 @@
 /* Progress bar css start ---------------------*/
 .container{
     display: flex;
-    width: 220px;
-    padding: 40px 0;
+    width: 180px;
+    padding: 30px 0;
     border-radius: 8px;
     background: #fff;
     row-gap: 30px;
@@ -67,8 +67,8 @@
 }
 .circular-progress{
     position: relative;
-    height: 150px;
-    width: 150px;
+    height: 120px;
+    width: 120px;
     border-radius: 50%;
     background: conic-gradient(#5af44c 3.6deg, #ededed 0deg);
     display: flex;
@@ -78,14 +78,14 @@
 .circular-progress::before{
     content: "";
     position: absolute;
-    height: 120px;
-    width: 120px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
     background-color: #fff;
 }
 .progress-value{
     position: relative;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 600;
     color: #5af44c;
 }
