@@ -12,6 +12,7 @@ import baseURL from "./config";
 
 function App() {
   // const baseURL = "http://127.0.0.1:3000/api";
+  
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [fileData, setFileData] = useState(null);
   const [linkBtnShow, setLinkBtnShow] = useState(false);
@@ -51,10 +52,11 @@ function App() {
       setFileData(formData);
       setLinkBtnShow(true);
       setLinkBox(false);
+      
       setuploadMessage("File uploaded successfully");
       console.log(formData);
       console.log(fileData?.get("myfile"));
-
+      
       console.log("uploadfile:-", uploadedFile);
     } else {
       toast.success("Something went wrong");
@@ -94,7 +96,7 @@ function App() {
         setLinkBox(true);
         setBtnSpin(false);
         const parts = (res.data.file).split('/');
-        const uuid = parts[parts.length - 1];
+        let uuid = parts[parts.length - 1];
         console.log(uuid)
         setUUID(uuid)
         console.log(res.data);
@@ -321,7 +323,7 @@ function App() {
                 </div>
               </div>
               <div className={`${linkBox ? "block" : "hidden"}`}>
-                <Email UUID={UUID} />
+                <Email UUID={UUID}></Email>
               </div>
             </div>
           </div>
@@ -343,6 +345,6 @@ function App() {
       <Toaster />
     </>
   );
-}
+            }
 
 export default App;

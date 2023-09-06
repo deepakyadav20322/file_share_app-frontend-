@@ -15,18 +15,23 @@ const Email = ({UUID}) => {
      const handleEmailChange = (e)=>{
       const {name,value} = e.target ;
       setEmailData((prevFormData) => ({ ...prevFormData, [name]: value,uuid:UUID }));
-            
+      
      }
      const sendEmailData = async()=>{
         try {
       setLoader(true);
+      console.log(emailData);
             const res = await axios.post(`${baseURL}/files/send`,emailData,{
                 headers:{
                     'Content-Type':'application/json',
                 }
             });
             if(res.status===200){
+              setEmailData({
+                emailTo: '', 
+                emailFrom: '', 
               
+            });
                 console.log(res);
                 toast.success(res.data.message);
                 setLoader(false);
@@ -50,16 +55,16 @@ const Email = ({UUID}) => {
          <div className={`flex flex-col justify-center items-center  ${loader?'hidden':'block'}`}>
         <div className='mb-1 mt-[1rem]'>
                   <label htmlFor="sender" className='pt-1'>Sender email</label>
-                  <input type="email" id='sender' name='emailFrom' className='border-b-2 border-black mr-4 ml-3 outline-none ' onChange={handleEmailChange} required/>
+                  <input type="email" id='sender' name='emailFrom' value={emailData.emailFrom} className='border-b-2 border-black mr-4 ml-3 outline-none ' onChange={handleEmailChange} required/>
                 </div>
                 <div className='mb-0 lg:mt-[1.5rem]'>
                   <label htmlFor="reciver" className='pt-1'>Reciver email</label>
-                <input type="email" id='reciver' name='emailTo' className='border-b-2 border-black ml-3 mr-4 outline-none' onChange={handleEmailChange} required/>
+                <input type="email" id='reciver' name='emailTo' value={emailData.emailTo} className='border-b-2 border-black ml-3 mr-4 outline-none' onChange={handleEmailChange} required/>
                 </div>
                 <button className=' border-[1px] outline-none bg-[#6EED1F] rounded px-3 py-2 mt-2 ml-20 mb-2 ' onClick={sendEmailData}>Send Email</button>
         </div>
-        <div class={`${loader?'block':'hidden'} z-50 flex justify-center items-center`}>
-   <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-[#6EED1F]"></div>
+        <div className={`${loader?'block':'hidden'} z-50 flex justify-center items-center`}>
+   <div className="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-[#6EED1F]"></div>
         </div>
    
         <Toaster/>
