@@ -45,7 +45,9 @@ const Email = ({UUID}) => {
      }
 
   return (
-    <div className='webshare-box-email border-2 border-black w-[450px] px-4 my-3 mx-2 h-[175px] lg:h-[150px] flex flex-row-reverse justify-center items-center'>
+    // <div className='webshare-box-email border-2 border-black w-[450px] px-4 my-3 mx-2 h-[175px] lg:h-[150px] flex flex-row-reverse justify-center items-center'>
+    <div className="border border-gray-300 rounded-xl w-full px-4 py-4 mt-4 flex flex-col lg:flex-row gap-6">
+
 
       <div className={`w-[100px] h-[100px] object-cover ml-2 flex flex-col justify-center items-center ${loader?'hidden':'block'}`}>
         <p className='text-[14px] font-[500]'>Or scan QR</p>
