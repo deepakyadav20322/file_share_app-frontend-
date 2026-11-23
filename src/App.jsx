@@ -124,7 +124,7 @@
 //                 alt=""
 //               /> */}
 //                 <h1 className="text-[26px] mb-1  font-[700] text-[#37D154]">
-//                   DocWave
+//                   SendAnyFile
 //                 </h1>
 //               </a>
 //             </div>
@@ -176,7 +176,7 @@
 //                 <a href="#" className="-m-1.5 p-1.5">
 //                   <span className="sr-only">Your Company</span>
 //                   <h1 className="text-[20px] mb-1 font-[700] text-[rgb(31,237,96)]">
-//                     DocWave
+//                     SendAnyFile
 //                   </h1>
 //                   {/* <img
 //                   className="h-8 w-auto"
@@ -468,7 +468,7 @@ export default function App() {
         <header className="fixed top-0 inset-x-0 z-50 bg-white/70 backdrop-blur border-b">
           <nav className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
             {/* Logo */}
-            <h1 className="text-2xl font-bold text-[#37D154]">DocWave</h1>
+            <h1 className="text-2xl font-bold text-[#37D154]">SendAnyFile</h1>
 
             {/* Desktop nav */}
             <div className="hidden md:flex items-center gap-8 text-sm font-medium">
@@ -672,7 +672,7 @@ export default function App() {
         {/* FOOTER */}
         <footer className="bg-[#0f172a] text-gray-400 py-10">
           <div className="max-w-6xl mx-auto px-6 flex justify-between">
-            <p>© 2025 DocWave</p>
+            <p>© 2025 SendAnyFile</p>
             <div className="flex gap-6 text-sm">
               <a>Privacy</a>
               <a>Terms</a>
