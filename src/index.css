@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;}
+/* In-page links (tables of contents) glide to their section; skipped for people who turn motion off. */
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth;}}
 *{
     box-sizing: border-box;
     padding: 0;
