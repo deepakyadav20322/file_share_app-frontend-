@@ -65,7 +65,7 @@ export default function SendPanel({ limits, onSent, onFilesAdded }) {
           setStep(which);
         },
         controller.signal,
-        limits.storage === "s3"
+        { direct: limits.directUpload === true, remote: limits.storage === "s3" }
       );
       onSent(transfer);
       setFiles([]);
